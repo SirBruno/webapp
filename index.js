@@ -11,7 +11,7 @@ router.get('/',function(req,res){
 router.get('/about',function(req,res){
   res.sendFile(path.join(__dirname+'/about.html'));
 });
-
+ 
 router.get('/sitemap',function(req,res){
   res.sendFile(path.join(__dirname+'/sitemap.html'));
 });
