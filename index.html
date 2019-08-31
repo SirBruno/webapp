@@ -1,29 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="ie=edge" http-equiv="X-UA-Compatible">
-        <title>Document</title>
-        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
-    <body>
-        <main>
-            <div>
-                <h1>CHECK THIS!</h1>
-            </div>
-            <div class="ct-main">
-                <div class="ct-container">
-                    <input class="ct-text-field" placeholder="type something..." type="text">
-                    <button class="ct-text-field-btn">Click here</button>
-                </div>
-                <br>
-                <p class="ct-clear">Clear</p>
-            </div>
-        </main>
 
-        <!-- js -->
-        <script src="functions.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <style>
+        /* california orange #f89406 */
+
+        * {
+            font-family: "Shadows Into Light", serif;
+        }
+
+        *::selection {
+            background: #f89406;
+            color: #000;
+        }
+
+        body {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        .ct-text-field {
+            background: #222;
+            border: 0;
+            outline: 0;
+            font-size: 18px;
+            padding: 10px 20px;
+            color: #eee;
+            font-weight: 500;
+        }
+
+        .ct-text-field::placeholder {
+            font-weight: 600;
+        }
+
+        .ct-text-field-btn {
+            min-height: 100%;
+            background: #f89406;
+            border: 0;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .ct-container {
+            display: inline-flex;
+            margin-bottom: 10px;
+        }
+
+        .ct-clear {
+            color: #777;
+            font-size: 20px;
+            line-height: 20px;
+            margin: 10px 0;
+            margin-bottom: 50px;
+            border-bottom: 2px solid transparent;
+            transition: all linear .15s
+        }
+
+        .ct-clear:hover {
+            color: #f89406;
+            cursor: pointer;
+        }
+
+        .ct-text {
+            padding: 0;
+            margin: 0;
+            color: #fff;
+            font-size: 20px;
+            line-height: 20px;
+            margin: 10px 0;
+        }
+
+        .ct-text.checked {
+            color: #555;
+            text-decoration: line-through;
+        }
+
+        .ct-text.checked:after {
+            content: 'Checked!';
+            z-index: 100;
+            position: absolute;
+            margin: auto;
+            left: 50%;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: -20px;
+            color: #fff;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-5deg);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>CHECK THIS!</h1>
+        </div>
+        <div class="ct-main">
+            <div class="ct-container">
+                <input class="ct-text-field" placeholder="type something..." type="text">
+                <button class="ct-text-field-btn">Save</button>
+            </div>
+            <br>
+            <p class="ct-clear">Clear</p>
+        </div>
+    </main>
+
+    <!-- js -->
+    <script>
+        const ctButton = document.getElementsByClassName("ct-text-field-btn");
+        const ctContainer = document.getElementsByClassName("ct-container");
+        const ctTextFld = document.querySelectorAll(".ct-text-field");
+
+        var countr = 0;
+
+        ctButton[0].addEventListener("click", () => {
+            if (ctTextFld[0].value != "") {
+                const newNode = document.createElement("span");
+                document.getElementsByClassName("ct-main")[0].appendChild(newNode);
+                const ctMainP = document.querySelectorAll(".ct-main span");
+                ctMainP[countr].innerHTML = `<div><p class="ct-text">${ctTextFld[0].value}</p></div>`;
+
+                countr++;
+            }
+
+            const ctText = document.getElementsByClassName("ct-text");
+            const ctTextChecked = document.getElementsByClassName("checked");
+
+            // adiciona os event listeners nos textos
+            for (let i in ctText) {
+                ctText[i].onclick = () => {
+                    if (ctText[i].classList.contains("checked")) {
+                        ctText[i].setAttribute("class", "ct-text");
+                    } else {
+                        ctText[i].setAttribute("class", "ct-text checked");
+                    }
+                }
+            }
+
+            document.getElementsByClassName("ct-clear")[0].onclick = () => {
+                for (let i in document.querySelector(".ct-main span")) {
+                    document.getElementsByClassName(`ct-main`)[0].removeChild(document.querySelectorAll(".ct-main span")[0]);
+                    countr = 0;
+                }
+            }
+        });
+
+        document.getElementsByTagName("input")[0].onkeyup = (e) => {
+            if (e.which === 13) {
+                e.preventDefault();
+                document.getElementsByClassName("ct-text-field-btn")[0].click();
+                document.getElementsByTagName("input")[0].value = "";
+            }
+        }
+    </script>
+</body>
+
 </html>
