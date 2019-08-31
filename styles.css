@@ -1,0 +1,96 @@
+/* california orange #f89406 */
+
+* {
+    font-family: "Shadows Into Light", serif;
+}
+
+*::selection {
+    background: #f89406;
+    color: #000;
+}
+
+body {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #fff;
+}
+
+.ct-text-field {
+    background: #222;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #eee;
+    font-weight: 500;
+}
+
+.ct-text-field::placeholder {
+    font-weight: 600;
+}
+
+.ct-text-field-btn {
+    min-height: 100%;
+    background: #f89406;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ct-container {
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+
+.ct-clear {
+    color: #777;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 10px 0;
+    margin-bottom: 50px;
+    border-bottom: 2px solid transparent;
+    transition: all linear .15s
+}
+
+.ct-clear:hover {
+    color: #f89406;
+    cursor: pointer;
+}
+
+.ct-text {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+.ct-text.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+.ct-text.checked:after {
+    content: 'Checked!';
+    z-index: 100;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -20px;
+    color: #fff;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-5deg);
+}

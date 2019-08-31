@@ -5,6 +5,8 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="ie=edge" http-equiv="X-UA-Compatible">
         <title>Document</title>
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
         <main>
@@ -16,38 +18,12 @@
                     <input class="ct-text-field" placeholder="type something..." type="text">
                     <button class="ct-text-field-btn">Click here</button>
                 </div>
+                <br>
+                <p class="ct-clear">Clear</p>
             </div>
         </main>
 
-        <!-- javascript -->
-        <script>
-            const ctButton = document.getElementsByClassName("ct-text-field-btn");
-            const ctContainer = document.getElementsByClassName("ct-container");
-            const ctTextFld = document.querySelectorAll(".ct-text-field");
-
-            var countr = 0;
-
-            ctButton[0].addEventListener("click", () => {
-                if (ctTextFld[0].value != "") {
-                    const newNode = document.createElement("span");
-
-                    document.getElementsByClassName("ct-main")[0].appendChild(newNode);
-                    
-                    const ctMainP = document.querySelectorAll(".ct-main span");
-
-                    // set the text of.. whut
-                    ctMainP[countr].innerHTML = `<div><p>${ctTextFld[0].value}</p></div><div class="ct-rm">X</div>`;
-
-                    countr++;
-                }
-
-                /* for (let i = 0; i < document.getElementsByClassName("ct-rm").length; i++) {
-                    document.getElementsByClassName(`ct-rm`)[i].onclick = () => {
-                        document.getElementsByClassName(`ct-rm`)[i].parentElement.parentElement.removeChild(document.querySelectorAll(".ct-main span")[i]);
-                        countr--;
-                    }
-                } */
-            });
-        </script>
+        <!-- js -->
+        <script src="functions.js"></script>
     </body>
 </html>
