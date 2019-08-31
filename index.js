@@ -28,7 +28,7 @@ router.get('/',function(req,res){
 app.use('/', router);
 
 // inicia o servidor local na porta 3000
-// o parametro dentro de "listen" diz basicamente pra usar a porta 3000, a menos que já exista uma porta pré configurada
+// o argumento dentro de "listen" diz basicamente pra usar a porta 3000, a menos que já exista uma porta pré configurada
 app.listen(process.env.port || 3000);
 
 // loga no console uma mensagem de que o servidor está ativo
